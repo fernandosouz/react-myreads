@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import BooksList from './BooksList'
+import BooksList from '../components/BooksList'
 import * as BooksAPI from "../BooksAPI";
 
 class SearchPage extends Component{
@@ -13,7 +13,7 @@ class SearchPage extends Component{
     updateQuery = (query) => {
         this.setState( { query });
     }
-    //TODO Verificar se esse é a meneira correta de se fazer várias chamadas na API
+
     getBooksByQuery(query){
         if(query !== '') {
             BooksAPI.search(query).then((listOfBooks) => {

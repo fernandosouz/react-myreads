@@ -1,8 +1,8 @@
 import React from 'react'
-import Shelf from './components/Shelf'
-import SearchPage from './components/SearchPage'
+import SearchPage from './pages/SearchPage'
+import HomePage from './pages/HomePage'
 import { Route } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -13,10 +13,7 @@ class BooksApp extends React.Component {
          * users can use the browser's back and forward buttons to navigate between
          * pages, as well as provide a good URL they can bookmark and share.
          */
-        showSearchPage: false,
-        shelfArray: [   {shelfTitle:"Currently Reading", shelf:"currentlyReading" },
-            {shelfTitle:"Want to Read", shelf:"wantToRead"},
-            {shelfTitle:"Read", shelf:"read"}]
+        showSearchPage: false
 
     }
 
@@ -24,23 +21,7 @@ class BooksApp extends React.Component {
         return (
             <div className="app">
                 <Route exact path='/' render={() => (
-                    <div>
-                        <div className="list-books">
-                            <div className="list-books-title">
-                                <h1>MyReads</h1>
-                            </div>
-                            <div className="list-books-content">
-                                {this.state.shelfArray.map((obj, index) => (
-                                    <div key={index}>
-                                        <Shelf shelfObj={obj}/>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="open-search">
-                            <Link to='/search'>Add a book</Link>
-                        </div>
-                    </div>
+                    <HomePage />
                 )}/>
 
                 <Route exact path='/search' render={() => (
