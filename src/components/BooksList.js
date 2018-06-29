@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Book from './Book';
 
 class BooksList extends Component{
+
+
+
     render(){
         const { list } = this.props;
 
@@ -10,7 +13,7 @@ class BooksList extends Component{
                 <ol className="books-grid">
                     {list.map((obj, index) => (
                         <li key={index}>
-                            <Book book={obj} />
+                            <Book book={obj}  />
                         </li>
                     ) )}
                 </ol>

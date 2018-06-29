@@ -1,20 +1,47 @@
 import React, { Component } from 'react';
+import * as BooksAPI from "../BooksAPI";
+
 
 class Book extends Component{
+
+    state = {
+        value: this.props.book.shelf,
+        arrayOptions: [
+            {name: "currentlyReading", desc:"Currently Reading"},
+            {name: "wantToRead", desc: "Want to Read"},
+            {name: "read", desc: "Read"},
+            {name: "none", desc: "None"}
+        ]
+    };
+
+    handleChange = (event) => {
+        this.setState({value: event.target.value});
+        this.updateAPI(event.target.value);
+    }
+
+    updateAPI = (value) => {
+        const updatePromisse =BooksAPI.update(this.props.book, value);
+        updatePromisse.then((response) => {
+            console.log(response);
+        }, (response) => {
+            console.log(response);
+        })
+    }
+
     render(){
         const {title, authors} = this.props.book;
+        const {arrayOptions} = this.state;
 
+        //TODO - fazer os que não tem shelf virem como NONE.
         return(
             <div  className="book">
                 <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${this.props.book.imageLinks.thumbnail})`}}></div>
                     <div className="book-shelf-changer">
-                        <select>
-                            <option value="move" disabled>Move to...</option>
-                            <option value="currentlyReading">Currently Reading</option>
-                            <option value="wantToRead">Want to Read</option>
-                            <option value="read">Read</option>
-                            <option value="none">None</option>
+                        <select value={this.state.value} onChange={this.handleChange}>
+                            {arrayOptions.map((obj) => (
+                                <option key={obj.name} value={obj.name}>{obj.desc}</option>
+                            ))}
                         </select>
                     </div>
                 </div>
@@ -24,4 +51,5 @@ class Book extends Component{
         )
     }
 }
+
 export default Book
