@@ -20,11 +20,11 @@ class Book extends Component{
     }
 
     updateAPI = (value) => {
-        const updatePromisse =BooksAPI.update(this.props.book, value);
+        const updatePromisse = BooksAPI.update(this.props.book, value);
         updatePromisse.then((response) => {
-            console.log(response);
+            /*console.log(response);*/
         }, (response) => {
-            console.log(response);
+            /*console.log(response);*/
         })
     }
 

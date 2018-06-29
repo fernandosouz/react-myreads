@@ -10,13 +10,18 @@ class BooksList extends Component{
 
         return(
             <div className="bookshelf-books">
-                <ol className="books-grid">
-                    {list.map((obj, index) => (
-                        <li key={index}>
-                            <Book book={obj}  />
-                        </li>
-                    ) )}
-                </ol>
+                {list.length === 0 ? (
+                    <div> Nenhum livro encontrado </div>
+                ) : (
+                    <ol className="books-grid">
+                        {list.map((obj, index) => (
+                            <li key={index}>
+                                <Book book={obj}  />
+                            </li>
+                        ) )}
+                    </ol>
+                )}
+
             </div>
         )
     }
