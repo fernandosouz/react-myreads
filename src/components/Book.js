@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as BooksAPI from "../BooksAPI";
+import * as BooksAPI from "../Utils/BooksAPI";
 
 
 class Book extends Component{
@@ -29,18 +29,23 @@ class Book extends Component{
     }
 
     render(){
+
         const {title, authors} = this.props.book;
-        const {arrayOptions} = this.state;
+        const {arrayOptions, value} = this.state;
 
         //TODO - fazer os que não tem shelf virem como NONE.
         return(
             <div  className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${this.props.book.imageLinks.thumbnail})`}}></div>
+                    <div className="book-cover" style={{
+                        width: 128,
+                        height: 188,
+                        backgroundImage: `url(${this.props.book.imageLinks.thumbnail})`}}></div>
                     <div className="book-shelf-changer">
-                        <select value={this.state.value} onChange={this.handleChange}>
+                        <select value={value} onChange={this.handleChange}>
                             {arrayOptions.map((obj) => (
-                                <option key={obj.name} value={obj.name}>{obj.desc}</option>
+                                <option key={obj.name}
+                                        value={obj.name}>{obj.desc}</option>
                             ))}
                         </select>
                     </div>

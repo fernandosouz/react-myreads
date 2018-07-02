@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BooksList from './BooksList';
-import * as BooksAPI from "../BooksAPI";
+import * as BooksAPI from "../Utils/BooksAPI";
 
 class Shelf extends Component{
     state = {

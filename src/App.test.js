@@ -1,16 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
+import React from 'react';
+import { shallow } from 'enzyme'
+import Book from "./components/Book";
 
-/** 
- This course is not designed to teach Test Driven Development. 
- Feel free to use this file to test your application, but it 
- is not required.
-**/
+describe('[Component] Book', () => {
 
-it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<App />, div)
-})
+    it('shallow render Book component correctly', () => {
+        expect(shallow(<Book book={
+            {shelf: 'none',
+            imageLinks: {
+                    thumbnail: "http://books.google.com/books/content?id=4O8Gfb76eTgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                }
+            }
+        } />));
+    });
 
 
+});

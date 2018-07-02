@@ -9,20 +9,22 @@ class BooksList extends Component{
         const { list } = this.props;
 
         return(
-            <div className="bookshelf-books">
+            <div>
                 {list.length === 0 ? (
                     <div> Nenhum livro encontrado </div>
                 ) : (
-                    <ol className="books-grid">
-                        {list.map((obj, index) => (
-                            <li key={index}>
-                                <Book book={obj}  />
-                            </li>
-                        ) )}
-                    </ol>
+                    <div className="bookshelf-books">
+                        <ol className="books-grid">
+                            {list.map((obj, index) => (
+                                <li key={index}>
+                                    <Book book={obj}  />
+                                </li>
+                            ) )}
+                        </ol>
+                    </div>
                 )}
-
             </div>
+
         )
     }
 }

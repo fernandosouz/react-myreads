@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import BooksList from '../components/BooksList'
-import * as BooksAPI from "../BooksAPI";
+import * as BooksAPI from "../Utils/BooksAPI";
 
 class SearchPage extends Component{
 
@@ -24,17 +24,13 @@ class SearchPage extends Component{
 
         if(query !== '') {
             BooksAPI.search(query).then((searchListOfBooks) => {
-                
+
                 searchListOfBooks.forEach( (searchBook) => {
                     const book = myListOfBooks.find(this.checkBookId, searchBook.id)
-                    book === undefined ? searchBook.shelf = 'none' : searchBook.shelf = book.shelf;
+                    searchBook.shelf = book ? book.shelf : 'none';
                 });
 
-                if(Array.isArray(searchListOfBooks)){
-                    this.setState({searchListOfBooks})
-                }else{
-                    this.setState({searchListOfBooks: []})
-                }
+                this.setState({searchListOfBooks: Array.isArray(searchListOfBooks) ? searchListOfBooks : []  })
             })
         }else{
             this.setState({searchListOfBooks: []})
@@ -68,11 +64,7 @@ class SearchPage extends Component{
                     </div>
                 </div>
                 <div className="search-books-results">
-                    {this.state.searchListOfBooks.length === 0 ? (
-                        <div> Nenhum livro encontrado </div>
-                    ) : (
-                        <BooksList list={searchListOfBooks}/>
-                    )}
+                    <BooksList list={searchListOfBooks}/>
                 </div>
             </div>
         )

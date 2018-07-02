@@ -1,3 +1,10 @@
+if (!global.window.localStorage) {
+    global.window.localStorage = {
+        getItem() { return '{}'; },
+        setItem() {}
+    };
+}
+
 
 const api = "https://reactnd-books-api.udacity.com"
 
