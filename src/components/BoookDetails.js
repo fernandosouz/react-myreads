@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import StarRatingComponent from 'react-star-rating-component';
 
 class BookDetails extends Component{
 
@@ -8,17 +9,14 @@ class BookDetails extends Component{
 
         this.state        = {
             modalIsOpen: false,
-            title:''
+            title:'',
+            rating: 1
         };
-        this.afterOpenModal = this.afterOpenModal.bind(this);
+
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
     }
 
-    afterOpenModal() {
-        // references are now sync'd and can be accessed.
-        this.subtitle.style.color = '#f00';
-    }
 
     closeModal() {
         this.setState({modalIsOpen: false});
@@ -31,29 +29,72 @@ class BookDetails extends Component{
 
     componentDidMount() {
         this.setState({
-            title : this.props.details.title
+            title : this.props.details.title,
+            rating: this.props.details.averageRating
         });
         Modal.setAppElement('body');
     }
 
     render(){
-
-        console.log(this.props);
+        const {title, authors, categories, description, infoLink, publishedDate, pageCount,
+            publisher, contentVersion} = this.props.details;
 
         return(
             <div>
                 <Modal
                     isOpen={this.state.modalIsOpen}
-                    onAfterOpen={this.afterOpenModal}
                     onRequestClose={this.closeModal}
                     contentLabel="Example Modal"
                 >
 
-                    <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
+                    <div className="book-cover-details" style={{
+                        backgroundImage: `url(${this.props.details.imageLinks.thumbnail})`}}>
+                    </div>
 
-                    <div>{this.state.title}</div>
+                    <div className="book-cover-capa" style={{
+                        margin: 0,
+                        width: 128,
+                        height: 188,
+                        top: -230,
+                        position: 'relative',
+                        backgroundImage: `url(${this.props.details.imageLinks.thumbnail})`}}>
+                    </div>
+                    <div className="book-cover-capa">
+                        <div className="row">
+                            {authors}: {title}
+                            <StarRatingComponent
+                                name="rate1"
+                                starCount={5}
+                                value={this.state.rating}
+                                editing={false}
+                            />
+                        </div>
 
-                    <button onClick={this.closeModal}>close</button>
+                        <h4>{publishedDate} by {publisher}</h4>
+                    </div>
+                    <div className="div-details">
+                        <div className="row">
+                            <p>
+                                {description}
+                            </p>
+                        </div>
+                        <div className="row">
+                            <div className="column">
+                                <p>Categories: {categories}</p>
+                                <p>Authors: {authors}</p>
+                                <p>Pages: {pageCount}</p>
+                                <p>Version: {contentVersion}</p>
+                            </div>
+                            <div className="column">
+                                <p> <a href={infoLink}>See More</a></p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div className="book-shelf-changer-close" onClick={this.closeModal}></div>
                 </Modal>
                 <div className="book-shelf-changer-details" onClick={this.openModal}></div>
             </div>

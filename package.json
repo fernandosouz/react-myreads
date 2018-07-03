@@ -10,7 +10,9 @@
     "react-dom": "^16.3.2",
     "react-modal": "^3.4.5",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "react-star-rating-component": "^1.4.1",
+    "react-toastify": "^4.1.0"
   },
   "devDependencies": {
     "enzyme": "^3.3.0",

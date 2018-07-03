@@ -1,55 +1,54 @@
 import React, { Component } from 'react';
 import * as BooksAPI from "../Utils/BooksAPI";
 import BookDetails from './BoookDetails';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 class Book extends Component{
 
-    state = {
+    state  = {
+        arrayOptions: [
+            {name: "currentlyReading", desc:"Currently Reading"},
+            {name: "wantToRead", desc: "Want to Read"},
+            {name: "read", desc: "Read"},
+            {name: "none", desc: "None"}
+        ],
+        openModal: false} ;
 
+    notifySucesss = () => {
+        toast.success("Successfully!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 2500,
+            onClose: () => {
+                this.props.updateList(this.props.book);
+            }
+        });
     };
 
-    constructor() {
-        super();
-
-        this.state        = {
-            value: '',
-            arrayOptions: [
-                {name: "currentlyReading", desc:"Currently Reading"},
-                {name: "wantToRead", desc: "Want to Read"},
-                {name: "read", desc: "Read"},
-                {name: "none", desc: "None"}
-            ],
-            openModal: false} ;
-    }
-
-
-    componentDidMount() {
-        this.setState({
-            value: this.props.book.shelf
+    notifyErr = () => {
+        toast.error("Ops, error! Try again!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 3000
         });
     }
 
-    handleChange = (event) => {
-        this.setState({value: event.target.value});
-        this.updateAPI(event.target.value);
-    }
-
-    updateAPI = (value) => {
-        const updatePromisse = BooksAPI.update(this.props.book, value);
-        updatePromisse.then((response) => {
-            /*console.log(response);*/
+    updateAPI = (event) => {
+        this.props.book.shelf = event.target.value;
+        BooksAPI.update(this.props.book, event.target.value).then((response) => {
+            console.log(response);
+            this.notifySucesss();
         }, (response) => {
-            /*console.log(response);*/
-        })
+            console.log(response);
+            this.notifyErr();
+        });
     }
 
     render(){
-
         const {title, authors} = this.props.book;
-        const {arrayOptions, value} = this.state;
+        const {arrayOptions} = this.state;
 
-        //TODO - fazer os que não tem shelf virem como NONE.
+
         return(
             <div>
                 <div  className="book">
@@ -57,10 +56,10 @@ class Book extends Component{
                         <div className="book-cover" style={{
                             width: 128,
                             height: 188,
-                            backgroundImage: `url(${this.props.book.imageLinks.thumbnail})`}}></div>
+                            backgroundImage: `url(${ this.props.book.imageLinks.thumbnail})`}}></div>
                         <BookDetails details={this.props.book} />
                         <div className="book-shelf-changer">
-                            <select value={value} onChange={this.handleChange}>
+                            <select value={this.props.book.shelf} onChange={this.updateAPI}>
                                 {arrayOptions.map((obj) => (
                                     <option key={obj.name}
                                             value={obj.name}>{obj.desc}</option>
@@ -70,6 +69,9 @@ class Book extends Component{
                     </div>
                     <div className="book-title">{title}</div>
                     <div className="book-authors">{authors}</div>
+                    <div>
+                        <ToastContainer />
+                    </div>
                 </div>
 
             </div>

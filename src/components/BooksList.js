@@ -4,9 +4,6 @@ import Book from './Book';
 
 class BooksList extends Component{
 
-
-
-
     render(){
         const { list } = this.props;
 
@@ -17,11 +14,10 @@ class BooksList extends Component{
                 ) : (
 
                     <div className="bookshelf-books">
-                        <span>Clique no livro para ver mais detalhes...</span>
                         <ol className="books-grid">
                             {list.map((obj, index) => (
                                 <li key={index}>
-                                    <Book book={obj}  />
+                                    <Book book={obj} updateList={this.props.updateList}/>
                                 </li>
                             ) )}
                         </ol>

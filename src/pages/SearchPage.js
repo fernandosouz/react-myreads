@@ -18,19 +18,29 @@ class SearchPage extends Component{
         return element.id === this;
     }
 
-    getBooksByQuery = (query) => {
+    updateList(book){
 
+    }
+
+    getBooksByQuery = (query) => {
         const {myListOfBooks} = this.state;
 
         if(query !== '') {
             BooksAPI.search(query).then((searchListOfBooks) => {
 
-                searchListOfBooks.forEach( (searchBook) => {
-                    const book = myListOfBooks.find(this.checkBookId, searchBook.id)
-                    searchBook.shelf = book ? book.shelf : 'none';
-                });
+                if(Array.isArray(searchListOfBooks)) {
+                    searchListOfBooks.forEach((searchBook) => {
+                        const book = myListOfBooks.find(this.checkBookId, searchBook.id);
+                        searchBook.shelf = book ? book.shelf : 'none';
+                        if(searchBook.id === 'eH6jBQAAQBAJ'){
+                            console.log(searchBook);
+                        }
+                    });
 
-                this.setState({searchListOfBooks: Array.isArray(searchListOfBooks) ? searchListOfBooks : []  })
+                    this.setState({searchListOfBooks: searchListOfBooks})
+                }
+            },(err)=>{
+                console.log(err);
             })
         }else{
             this.setState({searchListOfBooks: []})
@@ -64,7 +74,7 @@ class SearchPage extends Component{
                     </div>
                 </div>
                 <div className="search-books-results">
-                    <BooksList list={searchListOfBooks}/>
+                    <BooksList list={searchListOfBooks} updateList={this.updateList}/>
                 </div>
             </div>
         )
