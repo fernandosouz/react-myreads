@@ -3,11 +3,14 @@ import * as BooksAPI from "../Utils/BooksAPI";
 import BookDetails from './BoookDetails';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Card, Button, CardImg, CardTitle, CardText, CardColumns,
+    CardSubtitle, CardBody, Col} from 'reactstrap';
 
 
 class Book extends Component{
 
     state  = {
+        book: '',
         arrayOptions: [
             {name: "currentlyReading", desc:"Currently Reading"},
             {name: "wantToRead", desc: "Want to Read"},
@@ -21,7 +24,7 @@ class Book extends Component{
             position: toast.POSITION.BOTTOM_RIGHT,
             autoClose: 2500,
             onClose: () => {
-                this.props.updateList(this.props.book);
+                this.props.updateList(this.state.book);
             }
         });
     };
@@ -34,7 +37,9 @@ class Book extends Component{
     }
 
     updateAPI = (event) => {
-        this.props.book.shelf = event.target.value;
+        const b = this.props.book;
+        b.shelf = event.target.value;
+        this.setState({book: b});
         BooksAPI.update(this.props.book, event.target.value).then((response) => {
             console.log(response);
             this.notifySucesss();
@@ -44,14 +49,19 @@ class Book extends Component{
         });
     }
 
+    componentDidMount(){
+        this.setState({
+            book: this.props.book
+        })
+    }
+
     render(){
         const {title, authors} = this.props.book;
         const {arrayOptions} = this.state;
 
-
         return(
             <div>
-                <div  className="book">
+                <div className="book">
                     <div className="book-top">
                         <div className="book-cover" style={{
                             width: 128,

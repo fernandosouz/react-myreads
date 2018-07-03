@@ -14,12 +14,9 @@ class SearchPage extends Component{
     updateQuery = (query) => {
         this.setState( { query });
     }
+
     checkBookId(element, index, array){
         return element.id === this;
-    }
-
-    updateList(book){
-
     }
 
     getBooksByQuery = (query) => {
@@ -27,7 +24,6 @@ class SearchPage extends Component{
 
         if(query !== '') {
             BooksAPI.search(query).then((searchListOfBooks) => {
-
                 if(Array.isArray(searchListOfBooks)) {
                     searchListOfBooks.forEach((searchBook) => {
                         const book = myListOfBooks.find(this.checkBookId, searchBook.id);
@@ -36,7 +32,6 @@ class SearchPage extends Component{
                             console.log(searchBook);
                         }
                     });
-
                     this.setState({searchListOfBooks: searchListOfBooks})
                 }
             },(err)=>{

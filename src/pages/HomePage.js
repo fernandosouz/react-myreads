@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Shelf from '../components/Shelf'
 import * as BooksAPI from "../Utils/BooksAPI";
+import { Jumbotron, Button } from 'reactstrap';
 
 class HomePage extends Component{
 
@@ -21,8 +22,13 @@ class HomePage extends Component{
         })
     }
 
+    checkBookId(element, index, array){
+        return element.id === this;
+    }
+
+
     updateList = (book) => {
-        this.setState({listOfBooks: this.state.listOfBooks})
+        this.setState({ listOfBooks: this.state.listOfBooks })
     }
 
     render(){
@@ -31,9 +37,9 @@ class HomePage extends Component{
         return(
             <div>
                 <div className="list-books">
-                    <div className="list-books-title">
-                        <h1>MyReads</h1>
-                    </div>
+                    <Jumbotron>
+                        <h4 className="display-3">Hello, world!</h4>
+                    </Jumbotron>
                     <div className="list-books-content">
                         {shelfArray.map((obj, index) => (
                             <div key={index}>
