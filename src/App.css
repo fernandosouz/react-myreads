@@ -137,7 +137,7 @@ body, .app {
   position: relative;
   height: 200px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .book-shelf-changer {
@@ -161,11 +161,29 @@ body, .app {
   cursor: pointer;
 }
 
+
+.book-shelf-changer-details {
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgb(255, 251, 251);
+  background-image: url('./icons/Data-View-Details-icon.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+
 /* book cover */
 
 .book-cover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
+  left: 25px;
 }
 .book-cover-title {
   padding: 20px 10px 0;

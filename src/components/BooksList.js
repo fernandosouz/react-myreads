@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Book from './Book';
 
+
 class BooksList extends Component{
+
 
 
 
@@ -13,7 +15,9 @@ class BooksList extends Component{
                 {list.length === 0 ? (
                     <div> Nenhum livro encontrado </div>
                 ) : (
+
                     <div className="bookshelf-books">
+                        <span>Clique no livro para ver mais detalhes...</span>
                         <ol className="books-grid">
                             {list.map((obj, index) => (
                                 <li key={index}>

@@ -1,18 +1,34 @@
 import React, { Component } from 'react';
 import * as BooksAPI from "../Utils/BooksAPI";
+import BookDetails from './BoookDetails';
 
 
 class Book extends Component{
 
     state = {
-        value: this.props.book.shelf,
-        arrayOptions: [
-            {name: "currentlyReading", desc:"Currently Reading"},
-            {name: "wantToRead", desc: "Want to Read"},
-            {name: "read", desc: "Read"},
-            {name: "none", desc: "None"}
-        ]
+
     };
+
+    constructor() {
+        super();
+
+        this.state        = {
+            value: '',
+            arrayOptions: [
+                {name: "currentlyReading", desc:"Currently Reading"},
+                {name: "wantToRead", desc: "Want to Read"},
+                {name: "read", desc: "Read"},
+                {name: "none", desc: "None"}
+            ],
+            openModal: false} ;
+    }
+
+
+    componentDidMount() {
+        this.setState({
+            value: this.props.book.shelf
+        });
+    }
 
     handleChange = (event) => {
         this.setState({value: event.target.value});
@@ -35,23 +51,27 @@ class Book extends Component{
 
         //TODO - fazer os que não tem shelf virem como NONE.
         return(
-            <div  className="book">
-                <div className="book-top">
-                    <div className="book-cover" style={{
-                        width: 128,
-                        height: 188,
-                        backgroundImage: `url(${this.props.book.imageLinks.thumbnail})`}}></div>
-                    <div className="book-shelf-changer">
-                        <select value={value} onChange={this.handleChange}>
-                            {arrayOptions.map((obj) => (
-                                <option key={obj.name}
-                                        value={obj.name}>{obj.desc}</option>
-                            ))}
-                        </select>
+            <div>
+                <div  className="book">
+                    <div className="book-top">
+                        <div className="book-cover" style={{
+                            width: 128,
+                            height: 188,
+                            backgroundImage: `url(${this.props.book.imageLinks.thumbnail})`}}></div>
+                        <BookDetails details={this.props.book} />
+                        <div className="book-shelf-changer">
+                            <select value={value} onChange={this.handleChange}>
+                                {arrayOptions.map((obj) => (
+                                    <option key={obj.name}
+                                            value={obj.name}>{obj.desc}</option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
+                    <div className="book-title">{title}</div>
+                    <div className="book-authors">{authors}</div>
                 </div>
-                <div className="book-title">{title}</div>
-                <div className="book-authors">{authors}</div>
+
             </div>
         )
     }
