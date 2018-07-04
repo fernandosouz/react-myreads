@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import * as BooksAPI from "../Utils/BooksAPI";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import BookDetails from './BoookDetails';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Card, Button, CardImg, CardTitle, CardText, CardColumns,
-    CardSubtitle, CardBody, Col} from 'reactstrap';
+
 
 
 class Book extends Component{
@@ -69,9 +69,10 @@ class Book extends Component{
                             backgroundImage: `url(${ this.props.book.imageLinks.thumbnail})`}}></div>
                         <BookDetails details={this.props.book} />
                         <div className="book-shelf-changer">
-                            <select value={this.props.book.shelf} onChange={this.updateAPI}>
+                            <select className="form-control" id="exampleSelect1" value={this.props.book.shelf} onChange={this.updateAPI}>
                                 {arrayOptions.map((obj) => (
-                                    <option key={obj.name}
+                                    <option
+                                            key={obj.name}
                                             value={obj.name}>{obj.desc}</option>
                                 ))}
                             </select>

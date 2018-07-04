@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Book from './Book';
-import { Card, Button, CardImg, CardTitle, CardText, CardColumns,
-    CardSubtitle, CardBody, Col} from 'reactstrap';
 
 
 class BooksList extends Component{
@@ -28,7 +26,9 @@ class BooksList extends Component{
         return(
             <div>
                 {list.length === 0 ? (
-                    <div>a</div>
+                    <div className="alert alert-danger" role="alert">
+                        Nenhum livro encontrado nessa sessão.
+                    </div>
                 ) : (
 
                     <div className="bookshelf-books">

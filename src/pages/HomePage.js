@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Shelf from '../components/Shelf'
 import * as BooksAPI from "../Utils/BooksAPI";
-import { Jumbotron, Button } from 'reactstrap';
 
 class HomePage extends Component{
 
@@ -36,10 +35,12 @@ class HomePage extends Component{
 
         return(
             <div>
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item active" aria-current="page">Home</li>
+                    </ol>
+                </nav>
                 <div className="list-books">
-                    <Jumbotron>
-                        <h4 className="display-3">Hello, world!</h4>
-                    </Jumbotron>
                     <div className="list-books-content">
                         {shelfArray.map((obj, index) => (
                             <div key={index}>
@@ -51,7 +52,7 @@ class HomePage extends Component{
                     </div>
                 </div>
                 <div className="open-search">
-                    <Link to='/search'>Add a book</Link>
+                    <Link data-toggle="tooltip" data-placement="left" title="Adicionar livros..." to='/search'>Add a book</Link>
                 </div>
             </div>
         )

@@ -54,22 +54,29 @@ class SearchPage extends Component{
         const { query, searchListOfBooks } = this.state;
 
         return(
-            <div className="search-books">
-                <div className="search-books-bar">
-                    <Link className="close-search" to='/'>Close</Link>
-                    <div className="search-books-input-wrapper">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item active" aria-current="page">Search</li>
+                    </ol>
+                </nav>
+                <div className="search-books">
+                    <div className="search-books-bar">
+                        <Link className="close-search" to='/'>Close</Link>
+                        <div className="search-books-input-wrapper">
 
-                        <input type="text"
-                               placeholder="Search by title or author"
-                               value={query}
-                               onChange={(event) => {
-                                   this.updateQuery(event.target.value)
-                                   this.getBooksByQuery(event.target.value)
-                               }}/>
+                            <input type="text"
+                                   placeholder="Search by title or author"
+                                   value={query}
+                                   onChange={(event) => {
+                                       this.updateQuery(event.target.value)
+                                       this.getBooksByQuery(event.target.value)
+                                   }}/>
+                        </div>
                     </div>
-                </div>
-                <div className="search-books-results">
-                    <BooksList list={searchListOfBooks} updateList={this.updateList}/>
+                    <div className="search-books-results">
+                        <BooksList list={searchListOfBooks} updateList={this.updateList}/>
+                    </div>
                 </div>
             </div>
         )
