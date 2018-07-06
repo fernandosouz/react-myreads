@@ -61,7 +61,7 @@ class BookDetails extends Component{
                     </div>
                     <div className="book-cover-capa">
                         <div className="row">
-                            {authors}: {title}
+                            <h3>{authors}: {title}</h3>
                             <StarRatingComponent
                                 name="rate1"
                                 starCount={5}
@@ -70,7 +70,7 @@ class BookDetails extends Component{
                             />
                         </div>
 
-                        <h4>{publishedDate} by {publisher}</h4>
+                        <h6>{publishedDate} by {publisher}</h6>
                     </div>
                     <div className="div-details">
                         <div className="row">
@@ -86,7 +86,7 @@ class BookDetails extends Component{
                                 <p>Version: {contentVersion}</p>
                             </div>
                             <div className="column">
-                                <p> <a href={infoLink}>See More</a></p>
+                                <p> <a href={infoLink}>See More on Web</a></p>
                             </div>
                         </div>
 
@@ -96,7 +96,8 @@ class BookDetails extends Component{
 
                     <div className="book-shelf-changer-close" onClick={this.closeModal}></div>
                 </Modal>
-                <div className="book-shelf-changer-details" onClick={this.openModal}></div>
+                <button type="button" className="btn btn-link" onClick={this.openModal}>More</button>
+                {/*<div className="book-shelf-changer-details" ></div>*/}
             </div>
 
         )

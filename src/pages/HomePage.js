@@ -35,11 +35,6 @@ class HomePage extends Component{
 
         return(
             <div>
-                <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb">
-                        <li className="breadcrumb-item active" aria-current="page">Home</li>
-                    </ol>
-                </nav>
                 <div className="list-books">
                     <div className="list-books-content">
                         {shelfArray.map((obj, index) => (

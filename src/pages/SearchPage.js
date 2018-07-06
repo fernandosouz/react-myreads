@@ -28,9 +28,6 @@ class SearchPage extends Component{
                     searchListOfBooks.forEach((searchBook) => {
                         const book = myListOfBooks.find(this.checkBookId, searchBook.id);
                         searchBook.shelf = book ? book.shelf : 'none';
-                        if(searchBook.id === 'eH6jBQAAQBAJ'){
-                            console.log(searchBook);
-                        }
                     });
                     this.setState({searchListOfBooks: searchListOfBooks})
                 }
@@ -50,16 +47,15 @@ class SearchPage extends Component{
         })
     }
 
+    updateList = (book) => {
+
+    }
+
     render(){
         const { query, searchListOfBooks } = this.state;
 
         return(
             <div>
-                <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb">
-                        <li className="breadcrumb-item active" aria-current="page">Search</li>
-                    </ol>
-                </nav>
                 <div className="search-books">
                     <div className="search-books-bar">
                         <Link className="close-search" to='/'>Close</Link>
