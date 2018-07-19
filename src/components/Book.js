@@ -64,45 +64,20 @@ class Book extends Component{
                             <h5 className="card-title book-title">{title}</h5>
                             <p className="card-text book-authors">{authors}</p>
                         </div>
-                    <div className="row" style={{marginLeft: 0}}>
-                        <BookDetails style={{width: 30, paddingLeft:10}} details={this.props.book} />
-                        <div className="form-group" style={{width: 110}}>
-                            <select style={{fontSize:10, padding:2}} className="form-control" id="exampleSelect1" value={this.props.book.shelf} onChange={this.updateAPI}>
-                                {arrayOptions.map((obj) => (
-                                    <option style={{fontSize:14}}
-                                        key={obj.name}
-                                        value={obj.name}>{obj.desc}</option>
-                                ))}
-                            </select>
+                        <div className="row" style={{"width":"100%", "padding-left":"18%"}}>
+                            <BookDetails style={{width: 30, paddingLeft:10}} details={this.props.book} />
+                            <div className="form-group" style={{width: 90}}><select style={{fontSize:10, padding:2}} className="form-control" id="exampleSelect1" value={this.props.book.shelf} onChange={this.updateAPI}>
+                                    {arrayOptions.map((obj) => (
+                                        <option style={{fontSize:14}}
+                                            key={obj.name}
+                                            value={obj.name}>{obj.desc}</option>
+                                    ))}
+                                </select>
                         </div>
                     </div>
                 </div>
                 <div id="snackbar">Successfully!</div>
                 <div id="snackbarerror">Ops, try again!</div>
-               {/* <div className="book">
-                    <div className="book-top">
-                        <div className="book-cover" style={{
-                            width: 128,
-                            height: 188,
-                            backgroundImage: `url(${ this.props.book.imageLinks.thumbnail})`}}></div>
-                        <BookDetails details={this.props.book} />
-                        <div className="book-shelf-changer">
-                            <select className="form-control" id="exampleSelect1" value={this.props.book.shelf} onChange={this.updateAPI}>
-                                {arrayOptions.map((obj) => (
-                                    <option
-                                            key={obj.name}
-                                            value={obj.name}>{obj.desc}</option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-                    <div className="book-title">{title}</div>
-                    <div className="book-authors">{authors}</div>
-                    <div>
-                        <ToastContainer />
-                    </div>
-                </div>*/}
-
             </div>
         )
     }

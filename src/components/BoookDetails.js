@@ -96,7 +96,7 @@ class BookDetails extends Component{
 
                     <div className="book-shelf-changer-close" onClick={this.closeModal}></div>
                 </Modal>
-                <button type="button" className="btn btn-link" onClick={this.openModal}>More</button>
+                <button style={{fontSize: 12, "height":"69%"}}  type="button" className="btn btn-outline-primary" onClick={this.openModal}>More</button>
                 {/*<div className="book-shelf-changer-details" ></div>*/}
             </div>
 
