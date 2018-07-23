@@ -39,6 +39,8 @@ class BookDetails extends Component{
         const {title, authors, categories, description, infoLink, publishedDate, pageCount,
             publisher, contentVersion} = this.props.details;
 
+        const thumb = this.props.details.imageLinks == undefined ? "./images/nao_disponivel.jpg" : this.props.details.imageLinks.thumbnail;
+
         return(
             <div>
                 <Modal
@@ -48,7 +50,7 @@ class BookDetails extends Component{
                 >
 
                     <div className="book-cover-details" style={{
-                        backgroundImage: `url(${this.props.details.imageLinks.thumbnail})`}}>
+                        backgroundImage: `url(${thumb})`}}>
                     </div>
 
                     <div className="book-cover-capa" style={{
@@ -57,7 +59,7 @@ class BookDetails extends Component{
                         height: 188,
                         top: -230,
                         position: 'relative',
-                        backgroundImage: `url(${this.props.details.imageLinks.thumbnail})`}}>
+                        backgroundImage: `url(${thumb})`}}>
                     </div>
                     <div className="book-cover-capa">
                         <div className="row">

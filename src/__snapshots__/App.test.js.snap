@@ -1,0 +1,405 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Component] Book [Book] renders correctly 1`] = `
+<div>
+  <div
+    className="card"
+    style={
+      Object {
+        "width": 180,
+      }
+    }
+  >
+    <img
+      alt=""
+      className="card-img-top"
+      src="http://books.google.com/books/content?id=4O8Gfb76eTgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    />
+    <div
+      className="card-body"
+      style={
+        Object {
+          "padding": 5,
+        }
+      }
+    >
+      <h5
+        className="card-title book-title"
+      />
+      <p
+        className="card-text book-authors"
+      />
+    </div>
+    <div
+      className="row"
+      style={
+        Object {
+          "paddingLeft": "18%",
+          "width": "100%",
+        }
+      }
+    >
+      <div>
+        <button
+          className="btn btn-outline-primary"
+          onClick={[Function]}
+          style={
+            Object {
+              "fontSize": 12,
+              "height": "69%",
+            }
+          }
+          type="button"
+        >
+          More
+        </button>
+      </div>
+      <div
+        className="form-group"
+        style={
+          Object {
+            "width": 90,
+          }
+        }
+      >
+        <select
+          className="form-control"
+          id="exampleSelect1"
+          onChange={[Function]}
+          style={
+            Object {
+              "fontSize": 10,
+              "padding": 2,
+            }
+          }
+          value="none"
+        >
+          <option
+            style={
+              Object {
+                "fontSize": 14,
+              }
+            }
+            value="currentlyReading"
+          >
+            Currently Reading
+          </option>
+          <option
+            style={
+              Object {
+                "fontSize": 14,
+              }
+            }
+            value="wantToRead"
+          >
+            Want to Read
+          </option>
+          <option
+            style={
+              Object {
+                "fontSize": 14,
+              }
+            }
+            value="read"
+          >
+            Read
+          </option>
+          <option
+            style={
+              Object {
+                "fontSize": 14,
+              }
+            }
+            value="none"
+          >
+            None
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div
+    id="snackbar"
+  >
+    Successfully!
+  </div>
+  <div
+    id="snackbarerror"
+  >
+    Ops, try again!
+  </div>
+</div>
+`;
+
+exports[`[Component] Book [BooksList] renders correctly 1`] = `
+<div>
+  <div
+    className="bookshelf-books"
+  >
+    <ol
+      className="books-grid"
+    >
+      <li>
+        <div>
+          <div
+            className="card"
+            style={
+              Object {
+                "width": 180,
+              }
+            }
+          >
+            <img
+              alt=""
+              className="card-img-top"
+              src="http://books.google.com/books/content?id=4O8Gfb76eTgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+            />
+            <div
+              className="card-body"
+              style={
+                Object {
+                  "padding": 5,
+                }
+              }
+            >
+              <h5
+                className="card-title book-title"
+              />
+              <p
+                className="card-text book-authors"
+              />
+            </div>
+            <div
+              className="row"
+              style={
+                Object {
+                  "paddingLeft": "18%",
+                  "width": "100%",
+                }
+              }
+            >
+              <div>
+                <button
+                  className="btn btn-outline-primary"
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "fontSize": 12,
+                      "height": "69%",
+                    }
+                  }
+                  type="button"
+                >
+                  More
+                </button>
+              </div>
+              <div
+                className="form-group"
+                style={
+                  Object {
+                    "width": 90,
+                  }
+                }
+              >
+                <select
+                  className="form-control"
+                  id="exampleSelect1"
+                  onChange={[Function]}
+                  style={
+                    Object {
+                      "fontSize": 10,
+                      "padding": 2,
+                    }
+                  }
+                  value="none"
+                >
+                  <option
+                    style={
+                      Object {
+                        "fontSize": 14,
+                      }
+                    }
+                    value="currentlyReading"
+                  >
+                    Currently Reading
+                  </option>
+                  <option
+                    style={
+                      Object {
+                        "fontSize": 14,
+                      }
+                    }
+                    value="wantToRead"
+                  >
+                    Want to Read
+                  </option>
+                  <option
+                    style={
+                      Object {
+                        "fontSize": 14,
+                      }
+                    }
+                    value="read"
+                  >
+                    Read
+                  </option>
+                  <option
+                    style={
+                      Object {
+                        "fontSize": 14,
+                      }
+                    }
+                    value="none"
+                  >
+                    None
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div
+            id="snackbar"
+          >
+            Successfully!
+          </div>
+          <div
+            id="snackbarerror"
+          >
+            Ops, try again!
+          </div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <div
+            className="card"
+            style={
+              Object {
+                "width": 180,
+              }
+            }
+          >
+            <img
+              alt=""
+              className="card-img-top"
+              src="http://books.google.com/books/content?id=4O8Gfb76eTgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+            />
+            <div
+              className="card-body"
+              style={
+                Object {
+                  "padding": 5,
+                }
+              }
+            >
+              <h5
+                className="card-title book-title"
+              />
+              <p
+                className="card-text book-authors"
+              />
+            </div>
+            <div
+              className="row"
+              style={
+                Object {
+                  "paddingLeft": "18%",
+                  "width": "100%",
+                }
+              }
+            >
+              <div>
+                <button
+                  className="btn btn-outline-primary"
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "fontSize": 12,
+                      "height": "69%",
+                    }
+                  }
+                  type="button"
+                >
+                  More
+                </button>
+              </div>
+              <div
+                className="form-group"
+                style={
+                  Object {
+                    "width": 90,
+                  }
+                }
+              >
+                <select
+                  className="form-control"
+                  id="exampleSelect1"
+                  onChange={[Function]}
+                  style={
+                    Object {
+                      "fontSize": 10,
+                      "padding": 2,
+                    }
+                  }
+                  value="none"
+                >
+                  <option
+                    style={
+                      Object {
+                        "fontSize": 14,
+                      }
+                    }
+                    value="currentlyReading"
+                  >
+                    Currently Reading
+                  </option>
+                  <option
+                    style={
+                      Object {
+                        "fontSize": 14,
+                      }
+                    }
+                    value="wantToRead"
+                  >
+                    Want to Read
+                  </option>
+                  <option
+                    style={
+                      Object {
+                        "fontSize": 14,
+                      }
+                    }
+                    value="read"
+                  >
+                    Read
+                  </option>
+                  <option
+                    style={
+                      Object {
+                        "fontSize": 14,
+                      }
+                    }
+                    value="none"
+                  >
+                    None
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div
+            id="snackbar"
+          >
+            Successfully!
+          </div>
+          <div
+            id="snackbarerror"
+          >
+            Ops, try again!
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+`;

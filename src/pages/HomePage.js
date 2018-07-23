@@ -35,6 +35,12 @@ class HomePage extends Component{
 
         return(
             <div>
+                <div className="list-books-title">
+                    <h1>
+                        Projeto My Reads
+                    </h1>
+                </div>
+                <br></br>
                 <div className="list-books">
                     <div className="list-books-content">
                         {shelfArray.map((obj, index) => (

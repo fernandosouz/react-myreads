@@ -3,6 +3,8 @@ import * as BooksAPI from "../Utils/BooksAPI";
 import BookDetails from './BoookDetails';
 import 'react-toastify/dist/ReactToastify.css';
 
+import thumb_nao_disponivel from '../images/nao_disponivel.jpg'
+
 
 
 class Book extends Component{
@@ -56,15 +58,17 @@ class Book extends Component{
         const {title, authors} = this.props.book;
         const {arrayOptions} = this.state;
 
+        const thumb = this.props.book.imageLinks == undefined ? thumb_nao_disponivel : this.props.book.imageLinks.thumbnail;
+
         return(
             <div>
                 <div className="card" style={{width: 180}}>
-                    <img className="card-img-top" src={this.props.book.imageLinks.thumbnail} alt=""></img>
+                    <img className="card-img-top" src={thumb} alt=""></img>
                         <div className="card-body" style={{padding: 5}}>
                             <h5 className="card-title book-title">{title}</h5>
                             <p className="card-text book-authors">{authors}</p>
                         </div>
-                        <div className="row" style={{"width":"100%", "padding-left":"18%"}}>
+                        <div className="row" style={{"width":"100%", "paddingLeft":"18%"}}>
                             <BookDetails style={{width: 30, paddingLeft:10}} details={this.props.book} />
                             <div className="form-group" style={{width: 90}}><select style={{fontSize:10, padding:2}} className="form-control" id="exampleSelect1" value={this.props.book.shelf} onChange={this.updateAPI}>
                                     {arrayOptions.map((obj) => (
