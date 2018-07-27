@@ -39,7 +39,7 @@ class BookDetails extends Component{
         const {title, authors, categories, description, infoLink, publishedDate, pageCount,
             publisher, contentVersion} = this.props.details;
 
-        const thumb = this.props.details.imageLinks == undefined ? "./images/nao_disponivel.jpg" : this.props.details.imageLinks.thumbnail;
+        const thumb = this.props.details.imageLinks === undefined ? "./images/nao_disponivel.jpg" : this.props.details.imageLinks.thumbnail;
 
         return(
             <div>

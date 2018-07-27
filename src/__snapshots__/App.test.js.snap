@@ -131,6 +131,24 @@ exports[`[Component] Book [Book] renders correctly 1`] = `
 </div>
 `;
 
+exports[`[Component] Book [BookDetails] renders correctly 1`] = `
+<div>
+  <button
+    className="btn btn-outline-primary"
+    onClick={[Function]}
+    style={
+      Object {
+        "fontSize": 12,
+        "height": "69%",
+      }
+    }
+    type="button"
+  >
+    More
+  </button>
+</div>
+`;
+
 exports[`[Component] Book [BooksList] renders correctly 1`] = `
 <div>
   <div
@@ -400,6 +418,26 @@ exports[`[Component] Book [BooksList] renders correctly 1`] = `
         </div>
       </li>
     </ol>
+  </div>
+</div>
+`;
+
+exports[`[Component] Book [Shelf] renders correctly 1`] = `
+<div
+  className="bookshelf"
+>
+  <h2
+    className="bookshelf-title"
+  >
+    teste
+  </h2>
+  <div>
+    <div
+      className="alert alert-danger"
+      role="alert"
+    >
+      Nenhum livro encontrado nessa sessão.
+    </div>
   </div>
 </div>
 `;
