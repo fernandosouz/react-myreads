@@ -30,6 +30,8 @@ class SearchPage extends Component{
                         searchBook.shelf = book ? book.shelf : 'none';
                     });
                     this.setState({searchListOfBooks: searchListOfBooks})
+                }else{
+                    this.setState({searchListOfBooks: []})
                 }
             },(err)=>{
                 console.log(err);
