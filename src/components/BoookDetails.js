@@ -31,8 +31,9 @@ class BookDetails extends Component{
         this.setState({
             title : this.props.details.title,
             rating: this.props.details.averageRating
-        });
-        Modal.setAppElement('body');
+        },() => {
+            Modal.setAppElement('body')
+        })
     }
 
     render(){

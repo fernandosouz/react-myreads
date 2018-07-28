@@ -26,8 +26,10 @@ class HomePage extends Component{
     }
 
 
-    updateList = (book) => {
-        this.setState({ listOfBooks: this.state.listOfBooks })
+    updateList = () => {
+        this.setState(prevState => ({
+            listOfBooks: prevState.listOfBooks
+        }))
     }
 
     render(){

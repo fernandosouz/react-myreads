@@ -20,19 +20,19 @@ class Book extends Component{
         openModal: false} ;
 
     notifySucesss = () => {
-        const x = document.getElementById("snackbar");
-        x.className = "show";
+        const elementSnackBack = document.getElementById("snackbar");
+        elementSnackBack.className = "show";
         this.props.updateList(this.state.book);
         setTimeout(() => {
-            x.className = x.className.replace("show", "");
+            elementSnackBack.className = elementSnackBack.className.replace("show", "");
             }, 2000);
     };
 
     notifyErr = () => {
-        const x = document.getElementById("snackbarerror");
-        x.className = "show";
+        const elementSnackBack = document.getElementById("snackbarerror");
+        elementSnackBack.className = "show";
         setTimeout(() => {
-            x.className = x.className.replace("show", "");
+            elementSnackBack.className = elementSnackBack.className.replace("show", "");
         }, 2000);
     }
 
@@ -55,10 +55,11 @@ class Book extends Component{
     }
 
     render(){
-        const {title, authors} = this.props.book;
+        var {title} = this.props.book;
         const {arrayOptions} = this.state;
 
-        const thumb = this.props.book.imageLinks == undefined ? thumb_nao_disponivel : this.props.book.imageLinks.thumbnail;
+        const thumb = this.props.book.imageLinks  ? this.props.book.imageLinks.thumbnail : thumb_nao_disponivel;
+        const authors = this.props.book.authors  ? this.props.book.authors : "Autor Não Disponível";
 
         return(
             <div>

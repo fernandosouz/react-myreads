@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import BooksList from '../components/BooksList'
 import * as BooksAPI from "../Utils/BooksAPI";
+import { DebounceInput } from 'react-debounce-input';
 
 class SearchPage extends Component{
 
     state = {
         query: '',
         searchListOfBooks: [],
-        myListOfBooks: []
+        myListOfBooks: [],
+        message: "Nenhum livro encontrado nessa sessão."
     }
 
     updateQuery = (query) => {
@@ -34,7 +36,9 @@ class SearchPage extends Component{
                     this.setState({searchListOfBooks: []})
                 }
             },(err)=>{
-                console.log(err);
+                this.setState(() => ({
+                    message: err.toString()
+                }))
             })
         }else{
             this.setState({searchListOfBooks: []})
@@ -54,28 +58,35 @@ class SearchPage extends Component{
     }
 
     render(){
-        const { query, searchListOfBooks } = this.state;
+        const { query, searchListOfBooks, message } = this.state;
 
         return(
             <div>
                 <div className="search-books">
                     <div className="search-books-bar">
                         <Link className="close-search" to='/'>Close</Link>
-                        <div className="search-books-input-wrapper">
-
-                            <input type="text"
-                                   placeholder="Search by title or author"
-                                   value={query}
-                                   onChange={(event) => {
-                                       this.updateQuery(event.target.value)
-                                       this.getBooksByQuery(event.target.value)
-                                   }}/>
-                        </div>
-                    </div>
-                    <div className="search-books-results">
-                        <BooksList list={searchListOfBooks} updateList={this.updateList}/>
+                            <div className="search-books-input-wrapper">
+                                <DebounceInput
+                                    type="text"
+                                    name="query"
+                                    placeholder="Faça sua pesquisa aqui..."
+                                    value={query}
+                                    minLength={1}
+                                    debounceTimeout={300}
+                                    onChange={(event) => {
+                                        this.updateQuery(event.target.value)
+                                        this.getBooksByQuery(event.target.value)
+                                    }}
+                                />
+                            </div>
                     </div>
                 </div>
+                {searchListOfBooks.length > 0 ? (<div className="search-books-results">
+                        <BooksList list={searchListOfBooks} updateList={this.updateList}/>
+                    </div>):
+                    (<div className="alert alert-danger" style={{marginTop:100, marginLeft:"35%", position:"absolute"}} role="alert">
+                            {message}
+                    </div>)}
             </div>
         )
     }
