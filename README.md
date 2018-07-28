@@ -8,7 +8,7 @@
 1- npm test
 
 
-#Descrição
+# Descrição
 
 Projeto "MyReads" 
 São "prateleiras" para controlar quais livros você já leu, está lendo ou vai ler; podendo ver mais detalhes
